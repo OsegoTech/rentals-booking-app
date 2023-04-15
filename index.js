@@ -2,8 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./routes/auth.js"
-import usersRoute from "./routes/users.js"
-import hotelsRoute from "./routes/hotels.js"
+import usersRoute from "./routes/usersRoute.js"
+import hotelsRoute from "./routes/hotelsRoute.js"
 import roomsRoute from "./routes/rooms.js"
 import cookieParser from "cookie-parser";
 const app = express();
