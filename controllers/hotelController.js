@@ -1,3 +1,4 @@
+import HotelModel from "../models/HotelModel.js";
 import Hotel from "../models/HotelModel.js"
 
 
@@ -48,6 +49,18 @@ export const getHotels = async(req, res, next) => {
     try {
         const hotels = await Hotel.find();
         res.status(200).json(hotels);
+      } catch (err) {
+        next(err)
+      }
+}
+
+export const countByCity = async(req, res, next) => {
+  const cities = req.query.cities.split(",")
+    try {
+        const list = await Promise.all(cities.map(city => {
+          return HotelModel.countDocuments({city:city})
+        }))
+        res.status(200).json(list);
       } catch (err) {
         next(err)
       }
